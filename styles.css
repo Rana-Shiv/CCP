@@ -7,8 +7,9 @@ body {
   color: #333;
 }
 
+/* Cabeçalho com degradê */
 header {
-  background-color: #001f3f; /* azul escuro */
+  background: linear-gradient(to right, #001f3f, #ff851b); /* degradê azul -> laranja */
   color: white;
   padding: 15px 0;
   position: relative;
@@ -21,6 +22,8 @@ header .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .login-btn {
@@ -30,6 +33,7 @@ header .container {
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s;
+  font-weight: bold;
 }
 
 .login-btn:hover {
@@ -45,6 +49,7 @@ main {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+/* Menu principal */
 .menu-container {
   text-align: center;
 }
@@ -78,16 +83,19 @@ main {
   transform: scale(1.05);
 }
 
+/* Rodapé com degradê */
 footer {
-  background-color: #001f3f;
+  background: linear-gradient(to right, #001f3f, #ff851b); /* degradê azul -> laranja */
   color: white;
   text-align: center;
   padding: 10px;
   position: fixed;
   bottom: 0;
   width: 100%;
+  font-size: 0.9rem;
 }
-/* Estilos para a tabela de turmas */
+
+/* Tabela de turmas */
 .tabela-turmas {
   width: 100%;
   border-collapse: collapse;
@@ -100,7 +108,7 @@ footer {
 }
 
 .tabela-turmas th {
-  background-color: #001f3f; /* azul escuro */
+  background-color: #001f3f;
   color: white;
   text-align: left;
   padding: 12px;
@@ -112,18 +120,27 @@ footer {
 }
 
 .tabela-turmas td[contenteditable="true"] {
-  background-color: #fff3e0; /* tom suave para destacar edição */
+  background-color: #fff3e0;
   cursor: text;
   transition: background-color 0.3s ease;
 }
 
 .tabela-turmas td[contenteditable="true"]:focus {
   background-color: #ffe0b2;
-  outline: 2px solid #ff851b; /* laranja */
+  outline: 2px solid #ff851b;
 }
 
-/* Responsividade */
+/* Responsividade para telas menores */
 @media (max-width: 600px) {
+  header .container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .botoes-menu {
+    grid-template-columns: 1fr;
+  }
+
   .tabela-turmas thead {
     display: none;
   }
