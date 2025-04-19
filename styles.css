@@ -1,0 +1,157 @@
+/* estilos.css */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background-color: #001f3f; /* azul escuro */
+  color: white;
+  padding: 15px 0;
+  position: relative;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.login-btn {
+  background-color: #ff4136; /* vermelho */
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #e12d26;
+}
+
+main {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.menu-container {
+  text-align: center;
+}
+
+.menu-container h2 {
+  margin-bottom: 30px;
+  color: #001f3f;
+}
+
+.botoes-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.botao-menu {
+  display: inline-block;
+  padding: 15px;
+  background-color: #ff851b; /* laranja */
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: transform 0.2s, background-color 0.3s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.botao-menu:hover {
+  background-color: #e06d0d;
+  transform: scale(1.05);
+}
+
+footer {
+  background-color: #001f3f;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+/* Estilos para a tabela de turmas */
+.tabela-turmas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tabela-turmas th {
+  background-color: #001f3f; /* azul escuro */
+  color: white;
+  text-align: left;
+  padding: 12px;
+}
+
+.tabela-turmas td {
+  padding: 12px;
+  border-top: 1px solid #ccc;
+}
+
+.tabela-turmas td[contenteditable="true"] {
+  background-color: #fff3e0; /* tom suave para destacar edição */
+  cursor: text;
+  transition: background-color 0.3s ease;
+}
+
+.tabela-turmas td[contenteditable="true"]:focus {
+  background-color: #ffe0b2;
+  outline: 2px solid #ff851b; /* laranja */
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .tabela-turmas thead {
+    display: none;
+  }
+
+  .tabela-turmas, .tabela-turmas tbody, .tabela-turmas tr, .tabela-turmas td {
+    display: block;
+    width: 100%;
+  }
+
+  .tabela-turmas tr {
+    margin-bottom: 15px;
+    border-bottom: 2px solid #001f3f;
+  }
+
+  .tabela-turmas td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  .tabela-turmas td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 12px;
+    width: 45%;
+    padding-right: 10px;
+    font-weight: bold;
+    text-align: left;
+    color: #001f3f;
+  }
+}
