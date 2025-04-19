@@ -174,3 +174,60 @@ footer {
     border-bottom: none;
   }
 }
+
+/* Estilos para o login */
+.login-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  color: #001f3f;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #001f3f;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-btn {
+  background-color: #ff4136;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  width: 100%;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #e12d26;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .login-container {
+    padding: 15px;
+  }
+}
