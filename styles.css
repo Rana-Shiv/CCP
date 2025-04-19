@@ -9,7 +9,7 @@ body {
 
 /* Cabeçalho com degradê */
 header {
-  background: linear-gradient(to right, #001f3f, #ff851b); /* degradê azul -> laranja */
+  background: linear-gradient(to right, #001f3f 80%, #ff851b); /* 80% azul */
   color: white;
   padding: 15px 0;
   position: relative;
@@ -85,7 +85,7 @@ main {
 
 /* Rodapé com degradê */
 footer {
-  background: linear-gradient(to right, #001f3f, #ff851b); /* degradê azul -> laranja */
+  background: linear-gradient(to right, #001f3f 80%, #ff851b); /* 80% azul */
   color: white;
   text-align: center;
   padding: 10px;
