@@ -1,114 +1,135 @@
 /* estilos.css */
 
+/* =====================
+  Estilos gerais da página
+====================== */
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: #f4f4f4; /* Cor de fundo clara para o corpo */
+  color: #333; /* Cor do texto */
 }
 
-/* Cabeçalho com degradê */
+/* =====================
+  Cabeçalho com degradê
+====================== */
 header {
-  background: linear-gradient(to right, #001f3f, #ff851b); /* degradê azul -> laranja */
-  color: white;
-  padding: 15px 0;
+  background: linear-gradient(to right, #001f3f, #ff851b); /* Degradê azul para laranja */
+  color: white; /* Texto branco */
+  padding: 15px 0; /* Padding superior e inferior */
   position: relative;
 }
 
 header .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Alinha os itens nas extremidades */
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  flex-wrap: wrap;
+  max-width: 1200px; /* Largura máxima */
+  margin: 0 auto; /* Centraliza */
+  padding: 0 20px; /* Padding lateral */
+  flex-wrap: wrap; /* Permite quebra de linha */
   text-align: center;
 }
 
+/* Botão de login */
 .login-btn {
-  background-color: #ff4136; /* vermelho */
+  background-color: #ff4136; /* Cor vermelha do botão */
   color: white;
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s; /* Transição suave de cor */
   font-weight: bold;
 }
 
 .login-btn:hover {
-  background-color: #e12d26;
+  background-color: #e12d26; /* Cor ao passar o mouse */
 }
+
+/* =====================
+  Corpo principal (main)
+====================== */
 
 main {
   max-width: 1000px;
   margin: 40px auto;
   padding: 20px;
   background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombras */
 }
 
-/* Menu principal */
+/* =====================
+  Menu Principal (Centraliza botões e usa o azul do cabeçalho)
+====================== */
+
 .menu-container {
-  text-align: center;
+  text-align: center; /* Centraliza o texto */
 }
 
 .menu-container h2 {
   margin-bottom: 30px;
-  color: #001f3f;
+  color: #001f3f; /* Azul escuro */
 }
 
 .botoes-menu {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap; /* Permite os botões quebrarem linha */
+  justify-content: center; /* Centraliza os botões */
+  gap: 20px; /* Espaçamento entre os botões */
+  padding: 0 20px; /* Padding lateral */
 }
 
 .botao-menu {
   display: inline-block;
   padding: 15px;
-  background-color: #ff851b; /* laranja */
+  background-color: #001f3f; /* Azul escuro do cabeçalho */
   color: white;
   text-decoration: none;
   font-weight: bold;
   border-radius: 8px;
   transition: transform 0.2s, background-color 0.3s;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra suave nos botões */
 }
 
 .botao-menu:hover {
-  background-color: #e06d0d;
-  transform: scale(1.05);
+  background-color: #003366; /* Azul mais claro ao passar o mouse */
+  transform: scale(1.05); /* Aumenta o tamanho ao passar o mouse */
 }
 
-/* Rodapé com degradê */
+/* =====================
+  Rodapé com degradê
+====================== */
+
 footer {
-  background: linear-gradient(to right, #001f3f, #ff851b); /* degradê azul -> laranja */
+  background: linear-gradient(to right, #001f3f, #ff851b); /* Degradê azul para laranja */
   color: white;
-  text-align: center;
+  text-align: center; /* Texto centralizado */
   padding: 10px;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 100%; /* Largura total */
   font-size: 0.9rem;
 }
 
-/* Tabela de turmas */
+/* =====================
+  Estilos para tabelas de turmas
+====================== */
+
 .tabela-turmas {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
   font-size: 1rem;
   background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-radius: 8px; /* Bordas arredondadas */
+  overflow: hidden; /* Esconde qualquer overflow */
 }
 
 .tabela-turmas th {
-  background-color: #001f3f;
+  background-color: #001f3f; /* Azul escuro no cabeçalho */
   color: white;
   text-align: left;
   padding: 12px;
@@ -127,17 +148,20 @@ footer {
 
 .tabela-turmas td[contenteditable="true"]:focus {
   background-color: #ffe0b2;
-  outline: 2px solid #ff851b;
+  outline: 2px solid #ff851b; /* Contorno laranja */
 }
 
-/* Responsividade para telas menores */
+/* =====================
+  Responsividade para telas menores
+====================== */
+
 @media (max-width: 600px) {
   .tabela-turmas {
     border: 0;
   }
 
   .tabela-turmas thead {
-    display: none;
+    display: none; /* Esconde cabeçalho da tabela em telas pequenas */
   }
 
   .tabela-turmas tr {
@@ -159,14 +183,14 @@ footer {
   }
 
   .tabela-turmas td::before {
-    content: attr(data-label);
+    content: attr(data-label); /* Label para cada célula */
     position: absolute;
     left: 15px;
     top: 8px;
     width: 45%;
     font-weight: bold;
     text-align: left;
-    color: #001f3f;
+    color: #001f3f; /* Azul escuro */
     white-space: nowrap;
   }
 
@@ -175,20 +199,23 @@ footer {
   }
 }
 
-/* Estilos para o login */
+/* =====================
+  Estilos para login
+====================== */
+
 .login-container {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
   text-align: center;
 }
 
 .login-container h2 {
   margin-bottom: 20px;
-  color: #001f3f;
+  color: #001f3f; /* Azul escuro */
 }
 
 .form-group {
@@ -225,12 +252,20 @@ footer {
   background-color: #e12d26;
 }
 
-/* Responsive */
+/* =====================
+  Estilos responsivos para telas menores
+====================== */
+
 @media (max-width: 600px) {
   .login-container {
     padding: 15px;
   }
 }
+
+/* =====================
+  Ajustes de login com nova estrutura e centralização
+====================== */
+
 .login-container {
   max-width: 500px;
   margin: 40px auto;
@@ -280,18 +315,22 @@ footer {
 }
 
 .forgot-password a:hover {
-  color: #ff851b;
+  color: #ff851b; /* Laranja ao passar o mouse */
   text-decoration: underline;
 }
 
+/* =====================
+  Estilo dos botões de login
+====================== */
+
 .form-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Alinha os botões à direita */
   gap: 20px;
 }
 
 .entrar-btn {
-  background-color: #0074D9; /* azul */
+  background-color: #0074D9; /* Azul do cabeçalho */
   color: white;
   padding: 10px 25px;
   border: none;
@@ -302,12 +341,12 @@ footer {
 }
 
 .entrar-btn:hover {
-  background-color: #005fa3;
-  transform: scale(1.05);
+  background-color: #005fa3; /* Azul mais escuro ao passar o mouse */
+  transform: scale(1.05); /* Aumenta o tamanho */
 }
 
 .cancelar-btn {
-  background-color: #85144b; /* vermelho escuro */
+  background-color: #85144b; /* Vermelho escuro */
   color: white;
   padding: 10px 25px;
   border: none;
@@ -318,14 +357,17 @@ footer {
 }
 
 .cancelar-btn:hover {
-  background-color: #6e103c;
-  transform: scale(1.05);
+  background-color: #6e103c; /* Vermelho mais escuro ao passar o mouse */
+  transform: scale(1.05); /* Aumenta o tamanho */
 }
 
-/* Responsivo */
+/* =====================
+  Responsividade para o login
+====================== */
+
 @media (max-width: 600px) {
   .form-group-inline {
-    flex-direction: column;
+    flex-direction: column; /* Alinha os campos na vertical */
     align-items: stretch;
   }
 
@@ -345,22 +387,4 @@ footer {
   .forgot-password {
     text-align: center;
   }
-}
-
-/* Corrigindo botão do cabeçalho */
-.login-btn-header {
-  background-color: #ff4136;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  cursor: pointer;
-  font-size: 0.95rem;
-  display: inline-block;
-}
-
-.login-btn-header:hover {
-  background-color: #e12d26;
 }
