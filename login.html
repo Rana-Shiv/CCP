@@ -86,28 +86,29 @@
       verificarEmailNaPlanilha(userData);
     }
 
-    function verificarEmailNaPlanilha(userData) {
-      fetch('https://script.google.com/macros/s/AKfycbwpAqCje0viW537AjOBBJmbSOmbTK0HYUqg9StoaLfb1z_ieHq6mJYz-RXltQvh9Cgt/exec', {
-        method: 'POST',
-        body: JSON.stringify({ email: userData.email }),
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'ok') {
-          showToast("Login realizado com sucesso!", true);
-          setTimeout(() => {
-            window.location.href = "menu.html";
-          }, 2000);
-        } else {
-          showToast("Acesso negado, endereço de e-mail não autorizado!", false);
-        }
-      })
-      .catch(erro => {
-        console.error('Erro ao verificar o e-mail:', erro);
-        showToast("Erro na verificação. Tente novamente.", false);
-      });
+  function verificarEmailNaPlanilha(userData) {
+  fetch('https://script.google.com/macros/s/AKfycbwhJGwMCC-cQ2saJ1SDMO5-BW6jgN3NgmAVJT22ddqlSd8HuQLUpnkwz1GeuY1vQ9A3/exec', {
+    method: 'POST',
+    body: JSON.stringify({ email: userData.email }),
+    headers: { 'Content-Type': 'application/json' },
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === 'ok') {
+      showToast("Login realizado com sucesso!", true);
+      setTimeout(() => {
+        window.location.href = "menu.html";
+      }, 2000);
+    } else {
+      showToast("Acesso negado, endereço de e-mail não autorizado!", false);
     }
+  })
+  .catch(erro => {
+    console.error('Erro ao verificar o e-mail:', erro);
+    showToast("Erro na verificação. Tente novamente.", false);
+  });
+}
+
 
     function showToast(message, success = false) {
       const toast = document.getElementById("toast");
