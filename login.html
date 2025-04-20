@@ -6,6 +6,34 @@
   <title>Login - Colégio Cooperativista de Poá</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <style>
+    .toast {
+      visibility: hidden;
+      min-width: 250px;
+      margin-left: -125px;
+      background-color: #f44336; /* vermelho padrão */
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+      padding: 16px;
+      position: fixed;
+      z-index: 9999;
+      left: 50%;
+      bottom: 30px;
+      font-size: 16px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .toast.show {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .toast.success {
+      background-color: #4CAF50; /* verde */
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -39,8 +67,11 @@
     <p>© 2025 Shiv BI - Todos os direitos reservados.</p>
   </footer>
 
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
   <script>
-    function parseJwt (token) {
+    function parseJwt(token) {
       const base64Url = token.split('.')[1];
       const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
       const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
@@ -52,31 +83,40 @@
     function handleCredentialResponse(response) {
       const userData = parseJwt(response.credential);
       console.log("Usuário autenticado:", userData);
-
-      // Verifica se o e-mail está na planilha
-      verificarEmailNaPlanilha(userData.email);
+      verificarEmailNaPlanilha(userData);
     }
 
-    function verificarEmailNaPlanilha(email) {
-      fetch('https://script.google.com/macros/s/AKfycbwpAqCje0viW537AjOBBJmbSOmbTK0HYUqg9StoaLfb1z_ieHq6mJYz-RXltQvh9Cgt/exec', {  // URL da API
+    function verificarEmailNaPlanilha(userData) {
+      fetch('https://script.google.com/macros/s/AKfycbwpAqCje0viW537AjOBBJmbSOmbTK0HYUqg9StoaLfb1z_ieHq6mJYz-RXltQvh9Cgt/exec', {
         method: 'POST',
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: userData.email }),
         headers: { 'Content-Type': 'application/json' },
       })
       .then(res => res.json())
       .then(data => {
         if (data.status === 'ok') {
-          alert("Login realizado com sucesso!\n\nNome: " + userData.name + "\nEmail: " + userData.email);
-
-          // Redireciona para o menu
-          window.location.href = "menu.html";
+          showToast("Login realizado com sucesso!", true);
+          setTimeout(() => {
+            window.location.href = "menu.html";
+          }, 2000);
         } else {
-          alert('E-mail não autorizado!');
+          showToast("Acesso negado, endereço de e-mail não autorizado!", false);
         }
       })
       .catch(erro => {
         console.error('Erro ao verificar o e-mail:', erro);
+        showToast("Erro na verificação. Tente novamente.", false);
       });
+    }
+
+    function showToast(message, success = false) {
+      const toast = document.getElementById("toast");
+      toast.className = "toast" + (success ? " success" : "");
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3000);
     }
   </script>
 </body>
