@@ -66,7 +66,7 @@
   </main>
 
   <footer>
-    <p>© 2025 Shiv BI - Todos os direitos reservados (teste * 3).</p>
+    <p>© 2025 Shiv BI - Todos os direitos reservados (teste * 4).</p>
   </footer>
 
   <!-- Toast -->
@@ -88,16 +88,19 @@
       verificarEmailNaPlanilha(userData.email);
     }
 
-   function verificarEmailNaPlanilha(email) {
+  function verificarEmailNaPlanilha(email) {
   fetch('https://script.google.com/macros/s/AKfycbyLM-x40pvDnzuk9dsifpPJRQjaAr0YMu0-4FVBAbAPpGvg_WXjtTCGmn0IEP2mYug_/exec', {
     method: 'POST',
     body: JSON.stringify({ email: email }),
-    headers: { 'Content-Type': 'application/json' },
-    mode: 'no-cors' // Adicionando 'no-cors' para ignorar CORS
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*' // Permite todas as origens
+    },
+    mode: 'cors' // Muda para 'cors', já que 'no-cors' não vai retornar um corpo de resposta
   })
-  .then(res => {
-    // Aqui você pode apenas verificar se a requisição foi feita com sucesso
-    if (res.ok) {
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === 'ok') {
       showToast("Login realizado com sucesso!", true);
       setTimeout(() => {
         window.location.href = "menu.html";
@@ -111,6 +114,7 @@
     showToast("Erro na verificação. Tente novamente.", false);
   });
 }
+
 
 
     function showToast(message, success = false) {
