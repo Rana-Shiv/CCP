@@ -64,7 +64,7 @@
   </main>
 
   <footer>
-    <p>© 2025 Shiv BI - Todos os direitos reservados.</p>
+    <p>© 2025 Shiv BI - Todos os direitos reservados (teste).</p>
   </footer>
 
   <!-- Toast -->
@@ -83,32 +83,31 @@
     function handleCredentialResponse(response) {
       const userData = parseJwt(response.credential);
       console.log("Usuário autenticado:", userData);
-      verificarEmailNaPlanilha(userData);
+      verificarEmailNaPlanilha(userData.email);
     }
 
-  function verificarEmailNaPlanilha(userData) {
-  fetch('https://script.google.com/macros/s/AKfycbx4NZn15VOp52WS_Gh0ckw0r7F0SxJq_x9G49uCJr_gCfThr3HOMgj3rXlBqn01MAAc/exec', {
-    method: 'POST',
-    body: JSON.stringify({ email: userData.email }),
-    headers: { 'Content-Type': 'application/json' },
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === 'ok') {
-      showToast("Login realizado com sucesso!", true);
-      setTimeout(() => {
-        window.location.href = "menu.html";
-      }, 2000);
-    } else {
-      showToast("Acesso negado, endereço de e-mail não autorizado!", false);
+    function verificarEmailNaPlanilha(email) {
+      fetch('https://script.google.com/macros/s/AKfycbyLM-x40pvDnzuk9dsifpPJRQjaAr0YMu0-4FVBAbAPpGvg_WXjtTCGmn0IEP2mYug_/exec', {
+        method: 'POST',
+        body: JSON.stringify({ email: email }),
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'ok') {
+          showToast("Login realizado com sucesso!", true);
+          setTimeout(() => {
+            window.location.href = "menu.html";
+          }, 2000);
+        } else {
+          showToast("Acesso negado, endereço de e-mail não autorizado!", false);
+        }
+      })
+      .catch(erro => {
+        console.error('Erro ao verificar o e-mail:', erro);
+        showToast("Erro na verificação. Tente novamente.", false);
+      });
     }
-  })
-  .catch(erro => {
-    console.error('Erro ao verificar o e-mail:', erro);
-    showToast("Erro na verificação. Tente novamente.", false);
-  });
-}
-
 
     function showToast(message, success = false) {
       const toast = document.getElementById("toast");
