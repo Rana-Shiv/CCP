@@ -66,7 +66,7 @@
   </main>
 
   <footer>
-    <p>© 2025 Shiv BI - Todos os direitos reservados (teste * 2).</p>
+    <p>© 2025 Shiv BI - Todos os direitos reservados (teste * 3).</p>
   </footer>
 
   <!-- Toast -->
@@ -88,28 +88,30 @@
       verificarEmailNaPlanilha(userData.email);
     }
 
-    function verificarEmailNaPlanilha(email) {
-      fetch('https://script.google.com/macros/s/AKfycbyLM-x40pvDnzuk9dsifpPJRQjaAr0YMu0-4FVBAbAPpGvg_WXjtTCGmn0IEP2mYug_/exec', {
-        method: 'POST',
-        body: JSON.stringify({ email: email }),
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'ok') {
-          showToast("Login realizado com sucesso!", true);
-          setTimeout(() => {
-            window.location.href = "menu.html";
-          }, 2000);
-        } else {
-          showToast("Acesso negado, endereço de e-mail não autorizado!", false);
-        }
-      })
-      .catch(erro => {
-        console.error('Erro ao verificar o e-mail:', erro);
-        showToast("Erro na verificação. Tente novamente.", false);
-      });
+   function verificarEmailNaPlanilha(email) {
+  fetch('https://script.google.com/macros/s/AKfycbyLM-x40pvDnzuk9dsifpPJRQjaAr0YMu0-4FVBAbAPpGvg_WXjtTCGmn0IEP2mYug_/exec', {
+    method: 'POST',
+    body: JSON.stringify({ email: email }),
+    headers: { 'Content-Type': 'application/json' },
+    mode: 'no-cors' // Adicionando 'no-cors' para ignorar CORS
+  })
+  .then(res => {
+    // Aqui você pode apenas verificar se a requisição foi feita com sucesso
+    if (res.ok) {
+      showToast("Login realizado com sucesso!", true);
+      setTimeout(() => {
+        window.location.href = "menu.html";
+      }, 2000);
+    } else {
+      showToast("Acesso negado, endereço de e-mail não autorizado!", false);
     }
+  })
+  .catch(erro => {
+    console.error('Erro ao verificar o e-mail:', erro);
+    showToast("Erro na verificação. Tente novamente.", false);
+  });
+}
+
 
     function showToast(message, success = false) {
       const toast = document.getElementById("toast");
