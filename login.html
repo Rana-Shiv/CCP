@@ -53,13 +53,30 @@
       const userData = parseJwt(response.credential);
       console.log("Usuário autenticado:", userData);
 
-      // Aqui você pode redirecionar ou armazenar no localStorage, se quiser:
-      // localStorage.setItem('usuario', JSON.stringify(userData));
+      // Verifica se o e-mail está na planilha
+      verificarEmailNaPlanilha(userData.email);
+    }
 
-      alert("Login realizado com sucesso!\n\nNome: " + userData.name + "\nEmail: " + userData.email);
+    function verificarEmailNaPlanilha(email) {
+      fetch('https://script.google.com/macros/s/AKfycbwpAqCje0viW537AjOBBJmbSOmbTK0HYUqg9StoaLfb1z_ieHq6mJYz-RXltQvh9Cgt/exec', {  // URL da API
+        method: 'POST',
+        body: JSON.stringify({ email }),
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'ok') {
+          alert("Login realizado com sucesso!\n\nNome: " + userData.name + "\nEmail: " + userData.email);
 
-      // Redireciona para o menu
-      window.location.href = "menu.html";
+          // Redireciona para o menu
+          window.location.href = "menu.html";
+        } else {
+          alert('E-mail não autorizado!');
+        }
+      })
+      .catch(erro => {
+        console.error('Erro ao verificar o e-mail:', erro);
+      });
     }
   </script>
 </body>
